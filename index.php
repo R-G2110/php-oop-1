@@ -1,9 +1,10 @@
 <?php 
 
-require_once __DIR__ . '/Model/Movie.php';
+require_once __DIR__ . '/Model/Production.php';
 require_once __DIR__ . '/Model/Media.php';
 require_once __DIR__ . '/db/db.php';
 
+die;
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@ require_once __DIR__ . '/db/db.php';
 				
 				<div class="card-body">
 					<h5 class="card-title"><?php  echo $movie->title  ?></h5>
-					<p class="card-text">Genere: <?php  echo $movie->genre  ?></p>
+					<p class="card-text">Genere: <?php  echo implode(", " , $movie->genre)  ?></p>
 					<p class="card-text">Voto: <?php  echo $movie->rating  ?></p>
 					<div class="desc">
 						<p class="card-text"><?php  echo $movie->desc  ?></p>
