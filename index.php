@@ -24,11 +24,11 @@ require_once __DIR__ . '/db/db.php';
 </head>
 <body>
 	<h1 class="text-center my-4 ">PHP OOP 001</h1>
-	<div class="container my-5 ">
+	<div class="container rg-container my-5 ">
 		<div class="row">
 
 			<?php foreach($productions as $production): ?>
-				<div class="card rg-card my-3 mx-3" style="width: 18rem; ">
+				<div class="card rg-card my-3 mx-3" style="width: 370px; ">
 					<div class="card-image">
 						<img 
 							src="img/<?php  echo $production->image?->filename ?? 'No-Image-Placeholder.svg.png'  ?>" 
