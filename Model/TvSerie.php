@@ -6,7 +6,7 @@ class TvSerie extends Production {
 	public $number_of_episodes;
 	public $number_of_seasons;
 
-	public function __construct(string $title, string $desc, array $genre, float $rating, Media $image = null, string $aired_from_year, string $aired_to_year, string $number_of_episodes, string $number_of_seasons){
+	public function __construct(string $title, string $desc, array $genre, float $rating, Media $image = null, string $aired_from_year, string $aired_to_year, int $number_of_episodes, int $number_of_seasons){
 
     $this->aired_from_year = $aired_from_year;
     $this->aired_to_year = $aired_to_year;
@@ -15,4 +15,13 @@ class TvSerie extends Production {
 
     parent::__construct($title, $desc, $genre, $rating, $image);
   }
+
+  public function getAiredFromToYear(){
+    return "$this->aired_from_year - $this->aired_to_year";
+  }
+
+  public function getEpisodesAndSeasons(){
+    return "$this->number_of_episodes episodi, $this->number_of_seasons stagioni";
+  }
+
 }

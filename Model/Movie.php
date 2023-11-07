@@ -10,4 +10,12 @@ class Movie extends Production {
 
     parent::__construct($title, $desc, $genre, $rating, $image);
   }
+
+  public function getPublishedYear(){
+    return "Anno d'uscita: $this->published_year";
+  }
+
+  public function getRunningTime(){
+    return "Durata: $this->running_time";
+  }
 }

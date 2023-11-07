@@ -1,10 +1,12 @@
 <?php 
 
 require_once __DIR__ . '/Model/Production.php';
+require_once __DIR__ . '/Model/Movie.php';
+require_once __DIR__ . '/Model/TvSerie.php';
 require_once __DIR__ . '/Model/Media.php';
 require_once __DIR__ . '/db/db.php';
 
-die;
+
 ?>
 
 <!DOCTYPE html>
@@ -21,28 +23,33 @@ die;
 	<title>PHP OOP 1</title>
 </head>
 <body>
-	<h1 class="text-center my-4 ">PHP OOP Movies</h1>
-	<div class="container custom-container d-flex my-5 ">
-		<?php foreach($movies as $movie): ?>
-			<div class="custom-card card mx-2 " >
-				<img 
-					src="img/<?php  echo $movie->image?->filename ?? 'No-Image-Placeholder.svg.png' ?>"
-					class="card-img-top" 
-					alt="<?php echo $movie->image?->name ?? '' ?>"
-				>
-				
-				<div class="card-body">
-					<h5 class="card-title"><?php  echo $movie->title  ?></h5>
-					<p class="card-text">Genere: <?php  echo implode(", " , $movie->genre)  ?></p>
-					<p class="card-text">Voto: <?php  echo $movie->rating  ?></p>
-					<div class="desc">
-						<p class="card-text"><?php  echo $movie->desc  ?></p>
-					</div>
-					
-				</div>
-			</div>
-		<?php endforeach; ?>
+	<h1 class="text-center my-4 ">PHP OOP 001</h1>
+	<div class="container my-5 ">
+		<div class="row">
 
+			<?php foreach($productions as $production): ?>
+				<div class="card rg-card my-3 mx-3" style="width: 18rem; ">
+					<div class="card-image">
+						<img 
+							src="img/<?php  echo $production->image?->filename ?? 'No-Image-Placeholder.svg.png'  ?>" 
+							class="card-img-top" 
+							alt="<?php echo $production->title ?? '' ?>"
+						>
+					</div>
+					<div class="card-body">
+						<h5><?php echo $production->title ?></h5>
+						<p><?php echo get_class($production) ?></p>
+						<p><?php echo isset($production->running_time) ? $production->getRunningTime() : $production->getAiredFromToYear()  ?></p>
+						<p><?php echo isset($production->published_year) ? $production->getPublishedYear() : $production->getEpisodesAndSeasons()  ?></p>
+						<h6><?php echo implode(", ",$production->genre) ?></h6>
+						<h6>Voto: <?php echo $production->rating ?></h6>
+						<p class="card-text"><?php echo $production->desc ?></p>
+					</div>
+				</div>
+			<?php endforeach; ?>
+			
+		</div>
+		
 	</div>
 </body>
 </html>
